@@ -1,6 +1,7 @@
 const User = require("../../models/user.schema");
 
 exports.createOrUpdateUser = async (req, res) => {
+	//extract email, and picture link, then from email create the default name for user
 	const email = req.user.providerData[0].email;
 	const picture = req.user.providerData[0].photoURL;
 	const name = email.split("@")[0];

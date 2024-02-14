@@ -102,6 +102,7 @@ const App = () => {
 				/>
 				<Route exact path="/shop" element={<ShopPage />} />
 				<Route exact path="/cart" element={<CartPage />} />
+				{/* <UserRoute exact path="/user/password" component={Password} /> */}
 				{/* <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
 				<AdminRoute exact path="/admin/coupon" component={CouponPage} />
 				<AdminRoute exact path="/admin/products" component={AdminProducts} />
@@ -118,7 +119,6 @@ const App = () => {
 				<AdminRoute exact path="/admin/category" component={AdminCategory} />
 				<AdminRoute exact path="/admin/sub" component={AdminSubCategory} />
 				<UserRoute exact path="/user/history" component={History} />
-				<UserRoute exact path="/user/password" component={Password} />
 				<UserRoute exact path="/user/wishlist" component={Wishlist} />
 				<UserRoute exact path="/checkout" component={CheckoutPage} />
 				<UserRoute exact path="/payment" component={PaymentPage} /> */}

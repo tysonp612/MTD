@@ -16,6 +16,7 @@ const Login = () => {
 	});
 	const { email, password } = credentials;
 
+	//FOR LOG IN, when use fire base bult in functions for loginWithEmailAndPassword and loginWithGoogle, the auth listener will listen to auth token change, then trigger the dispatch and send back token from FE to BE for verification
 	const credentialsLogin = async (e) => {
 		e.preventDefault();
 
