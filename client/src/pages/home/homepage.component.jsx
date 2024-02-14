@@ -21,11 +21,11 @@ const Home = () => {
 			<h4 className="text-center p-3 mt-5 mb-5 display-5 jumbotron">
 				Categories
 			</h4>
-			{/* <HomePageCategory /> */}
+			<HomePageCategory />
 			<h4 className="text-center p-3 mt-5 mb-5 display-5 jumbotron">
 				Sub Categories
 			</h4>
-			{/* <HomePageSubCategory /> */}
+			<HomePageSubCategory />
 		</div>
 	);
 };
