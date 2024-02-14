@@ -1,28 +1,36 @@
 const User = require("../../models/user.schema");
 
 exports.createOrUpdateUser = async (req, res) => {
-	//extract email, and picture link, then from email create the default name for user
-	const email = req.user.providerData[0].email;
-	const picture = req.user.providerData[0].photoURL;
+	// Extract email and picture link, then from email create the default name for the user
+	const { email, photoURL: picture } = req.user.providerData[0];
 	const name = email.split("@")[0];
 
 	try {
-		//if there is already user in db, update new with req.user from checkToken middleware
-		const user = await User.findOneAndUpdate({ name, picture }, { new: true });
+		// Find user by email. If exists, update the picture, otherwise create a new user
+		let user = await User.findOneAndUpdate(
+			{ email },
+			{ name, picture },
+			{ new: true, upsert: true }
+		);
+
+		// If a user was found or created, log the action and prepare the response
 		if (user) {
-			console.log("USER UPDATED", user);
-			res.status(200).json(user);
-		} else {
-			//if no user found, create new user with schema
-			const newUser = await new User({
-				name: name,
-				picture,
-			}).save();
-			console.log("USER CREATED", newUser);
-			res.status(200).json(newUser);
+			console.log(`USER ${user ? "UPDATED" : "CREATED"}`);
+
+			// Construct a response object with only the specified fields
+			const userResponse = {
+				name: user.name,
+				email: user.email,
+				role: user.role,
+				_id: user._id,
+			};
+
+			// Send the formatted user response
+			res.status(200).json(userResponse);
 		}
 	} catch (error) {
-		console.log(error);
+		console.error(error);
+		res.status(500).send("Error in creating or updating the user");
 	}
 };
 

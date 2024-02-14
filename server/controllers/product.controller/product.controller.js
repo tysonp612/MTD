@@ -147,7 +147,6 @@ exports.updateProduct = async (req, res) => {
 exports.productsCount = async (req, res) => {
 	try {
 		let total = await Product.find().estimatedDocumentCount();
-		console.log(total);
 		res.status(200).json(total);
 	} catch (err) {
 		res

@@ -19,7 +19,7 @@ export const CartPage = () => {
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const user = useSelector((state) => state.user.currentUser);
 	const dispatch = useDispatch();
-	const history = useNavigate();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		calculateSingleItemPrice();
@@ -30,7 +30,7 @@ export const CartPage = () => {
 		//in this step,store and then get data from backend to avoid user changing data like price
 		const authToken = user.token;
 		updateCart(cartItems, authToken)
-			.then((res) => history.push("/checkout"))
+			.then((res) => navigate("/checkout"))
 			.catch((err) => console.log(err));
 	};
 	const handleIncreaseCartItem = (item) => {
@@ -45,9 +45,9 @@ export const CartPage = () => {
 	const handleDeleteCartItem = (item) => {
 		dispatch({ type: CartActionTypes.DELETE_FROM_CART, payload: item });
 	};
-	const handleHistory = (e) => {
+	const handleNavigate = (e) => {
 		e.preventDefault();
-		history({
+		navigate({
 			pathname: "/login",
 			state: { from: `/cart` },
 		});
@@ -199,13 +199,13 @@ export const CartPage = () => {
 						) : (
 							<div className="d-flex  justify-content-center">
 								<div
-									onClick={(e) => handleHistory(e)}
+									onClick={(e) => handleNavigate(e)}
 									className="btn btn-outline-primary m-3 "
 								>
 									LOGIN TO CHECKOUT
 								</div>
 								<div
-									onClick={(e) => handleHistory(e)}
+									onClick={(e) => handleNavigate(e)}
 									className="btn btn-outline-primary m-3 "
 								>
 									LOGIN TO PAY CASH ON DELIVERY
