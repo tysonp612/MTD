@@ -26,10 +26,10 @@ export const CartPage = () => {
 		calculateTotalPrice();
 	}, [cartItems]);
 
-	const saveCartToDatabase = () => {
+	const saveCartToDatabase = async () => {
 		//in this step,store and then get data from backend to avoid user changing data like price
 		const authToken = user.token;
-		updateCart(cartItems, authToken)
+		await updateCart(cartItems, authToken)
 			.then((res) => navigate("/checkout"))
 			.catch((err) => console.log(err));
 	};

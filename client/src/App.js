@@ -102,7 +102,17 @@ const App = () => {
 				/>
 				<Route exact path="/shop" element={<ShopPage />} />
 				<Route exact path="/cart" element={<CartPage />} />
-				{/* <UserRoute exact path="/user/password" component={Password} /> */}
+
+				{/* UserRoute checks if the user is authenticated, if so, renders the Password component, otherwise redirects to the login page */}
+				<Route
+					path="/user/password"
+					element={
+						<UserRoute>
+							<Password />
+						</UserRoute>
+					}
+				/>
+
 				{/* <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
 				<AdminRoute exact path="/admin/coupon" component={CouponPage} />
 				<AdminRoute exact path="/admin/products" component={AdminProducts} />
