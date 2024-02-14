@@ -24,13 +24,17 @@ export const CartPage = () => {
 	useEffect(() => {
 		calculateSingleItemPrice();
 		calculateTotalPrice();
-	}, [cartItems]);
+	}, []);
 
 	const saveCartToDatabase = async () => {
 		//in this step,store and then get data from backend to avoid user changing data like price
 		const authToken = user.token;
+
 		await updateCart(cartItems, authToken)
-			.then((res) => navigate("/checkout"))
+			.then((res) => {
+				console.log(res);
+				navigate("/checkout");
+			})
 			.catch((err) => console.log(err));
 	};
 	const handleIncreaseCartItem = (item) => {

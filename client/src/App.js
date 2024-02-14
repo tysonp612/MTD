@@ -112,7 +112,32 @@ const App = () => {
 						</UserRoute>
 					}
 				/>
-
+				{/* Checkout page for user */}
+				<Route
+					path="/checkout"
+					element={
+						<UserRoute>
+							<CheckoutPage />
+						</UserRoute>
+					}
+				/>
+				{/* History page for user */}
+				<Route
+					path="/user/history"
+					element={
+						<UserRoute>
+							<History />
+						</UserRoute>
+					}
+				/>
+				<Route
+					path="/user/wishlist"
+					element={
+						<UserRoute>
+							<Wishlist />
+						</UserRoute>
+					}
+				/>
 				{/* <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
 				<AdminRoute exact path="/admin/coupon" component={CouponPage} />
 				<AdminRoute exact path="/admin/products" component={AdminProducts} />
@@ -128,9 +153,7 @@ const App = () => {
 				/>
 				<AdminRoute exact path="/admin/category" component={AdminCategory} />
 				<AdminRoute exact path="/admin/sub" component={AdminSubCategory} />
-				<UserRoute exact path="/user/history" component={History} />
-				<UserRoute exact path="/user/wishlist" component={Wishlist} />
-				<UserRoute exact path="/checkout" component={CheckoutPage} />
+	
 				<UserRoute exact path="/payment" component={PaymentPage} /> */}
 			</Routes>
 		</div>

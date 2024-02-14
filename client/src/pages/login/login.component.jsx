@@ -22,18 +22,14 @@ const Login = () => {
 
 		try {
 			//0 Check if email and password is valid and login using firebase
-			const user = await logInWithEmailAndPassword(email, password)
-				.then(() => {
-					setCredentials({
-						email: "",
-						password: "",
-					});
-					// You might want to navigate the user or do some other action here
-					navigate("/");
-				})
-				.catch((err) => {
-					toast.error("Login failed, please try again");
+			const user = await logInWithEmailAndPassword(email, password);
+			if (user) {
+				setCredentials({
+					email: "",
+					password: "",
 				});
+				navigate("/");
+			}
 		} catch (error) {
 			toast.error("Login failed, please try again");
 		}
