@@ -66,7 +66,10 @@ export const logInWithEmailAndPassword = async (email, password) => {
 			email,
 			password
 		);
-		toast.success("Login successfully");
+		if (userCredential.user) {
+			toast.success("Login successfully");
+		}
+
 		return userCredential.user;
 	} catch (error) {
 		if (error.message === "Firebase: Error (auth/wrong-password).") {
@@ -92,10 +95,13 @@ export const logInWithGoogle = async () => {
 		const token = credential.accessToken;
 		// The signed-in user info.
 		const user = result.user;
-		if (user) toast.success("Google logged in successfully");
+
+		if (user) {
+			toast.success("Google logged in successfully");
+		}
 		return user;
 	} catch (error) {
-		console.log(error);
+		toast.error(error.message);
 	}
 };
 

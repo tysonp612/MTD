@@ -13,7 +13,7 @@ import { UserActionTypes } from "../../redux/reducers/user/user.types";
 
 const Header = () => {
 	const loggedInUser = useSelector((state) => state.user.currentUser);
-	console.log(loggedInUser);
+
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const dispatch = useDispatch();
 

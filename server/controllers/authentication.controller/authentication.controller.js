@@ -1,22 +1,20 @@
 const User = require("../../models/user.schema");
 
 exports.createOrUpdateUser = async (req, res) => {
-	const { name, email, picture } = req.user;
+	const email = req.user.providerData[0].email;
+	const picture = req.user.providerData[0].photoURL;
+	const name = email.split("@")[0];
+
 	try {
 		//if there is already user in db, update new with req.user from checkToken middleware
-		const user = await User.findOneAndUpdate(
-			{ email },
-			{ name, picture },
-			{ new: true }
-		);
+		const user = await User.findOneAndUpdate({ name, picture }, { new: true });
 		if (user) {
 			console.log("USER UPDATED", user);
 			res.status(200).json(user);
 		} else {
 			//if no user found, create new user with schema
 			const newUser = await new User({
-				email,
-				name: email.split("@")[0],
+				name: name,
 				picture,
 			}).save();
 			console.log("USER CREATED", newUser);

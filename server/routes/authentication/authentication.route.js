@@ -6,12 +6,13 @@ const {
 	adminCheck,
 } = require("../../middlewares/authentication.middleware/authentication.middleware");
 
-// router
-//   .route("/create-or-update-user")
-//   .post(authTokenCheck, authController.createOrUpdateUser);
+//also for login user
+router
+	.route("/create-or-update-user")
+	.post(authTokenCheck, authController.createOrUpdateUser);
 
-router.route("/create-or-update-user").post(authController.createOrUpdateUser);
-router.route("/create-or-update-user").post(authController.createOrUpdateUser);
+// router.route("/create-or-update-user").post(authController.createOrUpdateUser);
+// router.route("/create-or-update-user").post(authController.createOrUpdateUser);
 router
 	.route("/admin-route")
 	.post(authTokenCheck, adminCheck, authController.adminController);

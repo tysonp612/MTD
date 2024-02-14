@@ -50,24 +50,30 @@ const App = () => {
 	const dispatch = useDispatch();
 
 	const unsubscribe = onAuthStateChanged(auth, async (user) => {
+		// This listener function is the primary way the app stays in sync with the user's authentication state.
+		// It listens for changes to the user's auth token, which can happen through login, signup, or logout operations.
+		// These operations can be initiated anywhere in the app using Firebase's authentication methods.
+		// When the token changes, it triggers this listener, which then updates or creates the user record in the database.
+		// After updating the user information in the database, it dispatches the user's info to the Redux store.
 		if (user) {
 			const idTokenResult = await user.getIdTokenResult();
-			console.log(idTokenResult.token);
-			// createOrUpdateUser(idTokenResult.token)
-			// 	.then((res) => {
-			// 		dispatch({
-			// 			type: UserActionTypes.LOGGED_IN_USER,
-			// 			payload: {
-			// 				name: res.data.name,
-			// 				email: res.data.email,
-			// 				token: idTokenResult.token,
-			// 				role: res.data.role,
-			// 				_id: res.data._id,
-			// 			},
-			// 		});
-			// 		// roleBasedRedirect(res.data.role, history);
-			// 	})
-			// 	.catch((error) => console.log(error));
+
+			await createOrUpdateUser(idTokenResult.token)
+				.then((res) => {
+					dispatch({
+						type: UserActionTypes.LOGGED_IN_USER,
+						payload: {
+							name: res.data.name,
+							email: res.data.email,
+							token: idTokenResult.token,
+							role: res.data.role,
+							_id: res.data._id,
+						},
+					});
+
+					// roleBasedRedirect(res.data.role, history);
+				})
+				.catch((error) => console.log(error));
 		}
 	});
 	//get current user and store to redux user
