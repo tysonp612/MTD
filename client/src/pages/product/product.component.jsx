@@ -23,16 +23,19 @@ export const ProductPage = () => {
 	const { slug } = useParams();
 	const user = useSelector((state) => state.user.currentUser);
 
+	// Fetch product, wishlist, and related products when slug, page, or user changes
 	useEffect(() => {
 		loadProduct();
 		loadWishList();
 	}, [slug, page, user]);
 
+	// Fetch related products and product count when product changes
 	useEffect(() => {
 		loadRelatedProduct();
 		loadRelatedProductCount();
 	}, [product]);
 
+	// Load user's wishlist
 	const loadWishList = async () => {
 		try {
 			const res = await getAllWishList(user.token);
@@ -42,6 +45,7 @@ export const ProductPage = () => {
 		}
 	};
 
+	// Add product to user's wishlist
 	const handleAddToWishList = async () => {
 		try {
 			await addToWishList(user.token, product._id);
@@ -52,6 +56,7 @@ export const ProductPage = () => {
 		}
 	};
 
+	// Load single product
 	const loadProduct = async () => {
 		try {
 			const res = await getOneProduct(slug);
@@ -61,6 +66,7 @@ export const ProductPage = () => {
 		}
 	};
 
+	// Load count of related products
 	const loadRelatedProductCount = async () => {
 		try {
 			if (product && product.category) {
@@ -72,6 +78,7 @@ export const ProductPage = () => {
 		}
 	};
 
+	// Load related products
 	const loadRelatedProduct = async () => {
 		try {
 			if (product && product.category) {
@@ -83,6 +90,7 @@ export const ProductPage = () => {
 		}
 	};
 
+	// Handle star rating change
 	const handleStarRating = async (e) => {
 		try {
 			setStar(e);
