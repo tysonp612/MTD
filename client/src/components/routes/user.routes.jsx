@@ -5,9 +5,6 @@ import { Navigate, useLocation } from "react-router-dom"; // Components from Rea
 
 // UserRoute is a wrapper component that takes children components as props
 export const UserRoute = ({ children }) => {
-	// useEffect(() => {
-
-	// });
 	// Access the current user from the Redux store
 	const user = useSelector((state) => state.user.currentUser);
 	// useLocation hook to get the current location (used for redirecting after login if necessary)

@@ -138,6 +138,16 @@ const App = () => {
 						</UserRoute>
 					}
 				/>
+
+				<Route
+					path="/admin/dashboard"
+					element={
+						<AdminRoute>
+							<AdminDashboard />
+						</AdminRoute>
+					}
+				/>
+
 				{/* <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
 				<AdminRoute exact path="/admin/coupon" component={CouponPage} />
 				<AdminRoute exact path="/admin/products" component={AdminProducts} />
