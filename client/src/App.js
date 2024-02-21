@@ -95,6 +95,7 @@ const App = () => {
 				<Route exact path="/forgot/password" element={<ForgotPassword />} />
 				<Route exact path="/product/:slug" element={<ProductPage />} />
 				<Route exact path="/category/:slug" element={<CategoriesPage />} />
+				<Route exact path="/payment" element={<PaymentPage />} />
 				<Route
 					exact
 					path="/sub-category/:slug"
@@ -195,11 +196,6 @@ const App = () => {
 						</AdminRoute>
 					}
 				/>
-
-				{/* 
-				
-	
-				<UserRoute exact path="/payment" component={PaymentPage} /> */}
 			</Routes>
 		</div>
 	);

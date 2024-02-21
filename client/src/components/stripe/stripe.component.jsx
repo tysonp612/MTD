@@ -5,7 +5,7 @@ import { emptyCart } from "./../../utils/user/user.utils";
 import { createOrder } from "./../../utils/order/order.utils";
 import { Link } from "react-router-dom";
 import { createPaymentIntent } from "./../../utils/stripe/stripe";
-// import "./stripe.scss";
+import "./stripe.scss";
 export const StripeCheckout = ({ user }) => {
 	const [succeeded, setSucceeded] = useState(false);
 	const [error, setError] = useState(null);
@@ -15,12 +15,13 @@ export const StripeCheckout = ({ user }) => {
 	const elements = useElements();
 	const stripe = useStripe();
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		//when comp mounted, make request to backend and get res of client secret key
 		createPaymentIntent(user.token).then((res) => {
 			setClientSecret(res.data.clientSecret);
 		});
-	}, []);
+	}, [user.token]);
 	const cartStyle = {
 		style: {
 			base: {
@@ -79,10 +80,19 @@ export const StripeCheckout = ({ user }) => {
 	};
 	return (
 		<div>
-			<p className={succeeded ? "result-message" : "result-message hidden"}>
-				Payment successful{" "}
-				<Link to={"/user/history"}>Click here to see your purchases</Link>
-			</p>
+			{succeeded ? (
+				<p className="result-message">
+					Payment successful.{" "}
+					<Link to={"/user/history"}>Click here to see your purchases.</Link>
+				</p>
+			) : processing ? (
+				<p>Processing payment...</p>
+			) : error ? (
+				<p className="error-message">{error}</p>
+			) : (
+				<p>Fill in your card details to pay.</p>
+			)}
+
 			<form className="stripe-form" id="payment-form" onSubmit={handleSubmit}>
 				<CardElement
 					id="card-element"

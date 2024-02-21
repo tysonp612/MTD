@@ -1,5 +1,5 @@
 // UserRoute.js
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux"; // Hook to access the Redux store state
 import { Navigate, useLocation } from "react-router-dom"; // Components from React Router v6 for navigation and location handling
 
