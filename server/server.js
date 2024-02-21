@@ -12,7 +12,11 @@ const authRoutes = require("./routes/authentication/authentication.route");
 //1) CREATE APP FROM EXPRESS AND SET UP MONGOOSE CONFIG
 //app
 const app = express();
-app.use(express.json());
+
+app.use(express.json({ limit: "50mb" })); // Increase JSON payload size
+app.use(
+	express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
+); // Increase URL-encoded payload size
 //as we connect, we got a promise back
 console.log(process.env.DATABASE);
 mongoose

@@ -24,7 +24,7 @@ export const CartPage = () => {
 	useEffect(() => {
 		calculateSingleItemPrice();
 		calculateTotalPrice();
-	}, []);
+	}, [cartItems]);
 
 	const saveCartToDatabase = async () => {
 		//in this step,store and then get data from backend to avoid user changing data like price
