@@ -147,22 +147,57 @@ const App = () => {
 						</AdminRoute>
 					}
 				/>
-
-				{/* <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
-				<AdminRoute exact path="/admin/coupon" component={CouponPage} />
-				<AdminRoute exact path="/admin/products" component={AdminProducts} />
-				<AdminRoute
-					exact
+				<Route
+					path="/admin/products"
+					element={
+						<AdminRoute>
+							<AdminProducts />
+						</AdminRoute>
+					}
+				/>
+				<Route
+					path="/admin/coupon"
+					element={
+						<AdminRoute>
+							<CouponPage />
+						</AdminRoute>
+					}
+				/>
+				<Route
 					path="/admin/showproducts"
-					component={AdminShowProduct}
+					element={
+						<AdminRoute>
+							<AdminShowProduct />
+						</AdminRoute>
+					}
 				/>
-				<AdminRoute
-					exact
+				<Route
 					path="/admin/product/:slug"
-					component={ProductUpdate}
+					element={
+						<AdminRoute>
+							<ProductUpdate />
+						</AdminRoute>
+					}
 				/>
-				<AdminRoute exact path="/admin/category" component={AdminCategory} />
-				<AdminRoute exact path="/admin/sub" component={AdminSubCategory} />
+				<Route
+					path="/admin/category"
+					element={
+						<AdminRoute>
+							<AdminCategory />
+						</AdminRoute>
+					}
+				/>
+				<Route
+					path="/admin/sub"
+					element={
+						<AdminRoute>
+							<AdminSubCategory />
+						</AdminRoute>
+					}
+				/>
+
+				{/* 
+				
 	
 				<UserRoute exact path="/payment" component={PaymentPage} /> */}
 			</Routes>

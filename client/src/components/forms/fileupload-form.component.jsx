@@ -13,6 +13,7 @@ export const FileUploadForm = ({ values, setValues }) => {
 	const allUploadedFiles = values.images;
 	const user = useSelector((state) => state.user.currentUser);
 	const fileUploadAndResize = (e) => {
+		console.log(e.target.files);
 		const files = [...e.target.files];
 		files.forEach(
 			(file) =>
@@ -26,6 +27,7 @@ export const FileUploadForm = ({ values, setValues }) => {
 					async (uri) => {
 						await uploadFiles(uri, user.token)
 							.then((res) => {
+								console.log("CHECKIS");
 								allUploadedFiles.push(res.data);
 								setValues({ ...values, images: allUploadedFiles });
 							})
