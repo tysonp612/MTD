@@ -19,7 +19,7 @@ import { createOrUpdateUser } from "./utils/authentication/authentication.utils"
 
 //Components
 import Home from "./pages/home/homepage.component";
-// import DrawerComponent from "./components/drawer/drawer.component";
+import DrawerComponent from "./components/drawer/drawer.component";
 import Header from "./components/header/header.component";
 //Authentication
 import Login from "./pages/login/login.component";
@@ -85,7 +85,7 @@ const App = () => {
 		<div>
 			<Header />
 			<ToastContainer />
-			{/* <DrawerComponent /> */}
+			<DrawerComponent />
 
 			<Routes>
 				<Route exact path="/" element={<Home />} />

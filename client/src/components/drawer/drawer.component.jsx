@@ -2,11 +2,11 @@
 import React from "react";
 import { CartActionTypes } from "./../../redux/reducers/cart/cart.types";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Drawer } from "antd";
 import productsDefaultImages from "./../../components/images/techdevices.jpeg";
 const DrawerComponent = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const drawerVisible = useSelector((state) => state.cart.drawerVisible);
 	const cartItems = useSelector((state) => state.cart.cartItems);
 	const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const DrawerComponent = () => {
 		});
 	};
 	const handleHistory = () => {
-		history.push("/cart");
+		navigate("/cart");
 		dispatch({ type: CartActionTypes.TOGGLE_DRAWER });
 	};
 	return (
