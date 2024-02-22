@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import { CartActionTypes } from "./../../redux/reducers/cart/cart.types";
 import { useSelector, useDispatch } from "react-redux";
