@@ -21,20 +21,20 @@ const History = () => {
 			})
 			.catch((err) => console.log(err));
 	};
-	const showDownloadLink = (order) => {
-		///FIX THIS PDF LATER
-		//NOTE https://stackoverflow.com/questions/63280109/how-to-update-webpack-config-for-a-react-project-created-using-create-react-app
-		return (
-			// <PDFDownloadLink
-			// 	fileName="invoice.pdf"
-			// 	className="btn btn-sm btnblock btn-outline-primary"
-			// 	document={<Invoice order={order} />}
-			// >
-			// 	Download PDF
-			// </PDFDownloadLink>
-			<p>Download</p>
-		);
-	};
+	// const showDownloadLink = (order) => {
+	// 	///FIX THIS PDF LATER
+	// 	//NOTE https://stackoverflow.com/questions/63280109/how-to-update-webpack-config-for-a-react-project-created-using-create-react-app
+	// 	return (
+	// 		// <PDFDownloadLink
+	// 		// 	fileName="invoice.pdf"
+	// 		// 	className="btn btn-sm btnblock btn-outline-primary"
+	// 		// 	document={<Invoice order={order} />}
+	// 		// >
+	// 		// 	Download PDF
+	// 		// </PDFDownloadLink>
+	// 		// <p>Download</p>
+	// 	);
+	// };
 	const showOrderInTable = (order) => {
 		return <TableComponent order={order} />;
 	};
@@ -44,9 +44,9 @@ const History = () => {
 				<div key={i} className="m-5 p-3 card">
 					<ShowPaymentInfo order={order} />
 					{showOrderInTable(order)}
-					<div className="row">
+					{/* <div className="row">
 						<div className="col">{showDownloadLink(order)}</div>
-					</div>
+					</div> */}
 				</div>
 			);
 		});

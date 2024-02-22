@@ -37,10 +37,16 @@ export const PaymentPage = () => {
 	return (
 		<div className="container p-5 text-center">
 			<h4>Complete your purchase</h4>
-			<p>
-				For testing purpose, please use Credit Card number as 4242 4242 4242
-				4242
-			</p>
+			<div className="bg-warning">
+				<h4>
+					For testing purpose, please use Credit Card number as 4242 4242 4242
+					4242
+				</h4>
+				<h4>MM/YY: 424</h4>
+				<h4>CVC: 2424</h4>
+				<h4>ZIP: 42424</h4>
+			</div>
+
 			<div className="col-md-8 offset-md-2">
 				<Card
 					actions={[
@@ -67,7 +73,6 @@ export const PaymentPage = () => {
 					/>
 				</Card>
 			</div>
-
 			<Elements stripe={stripePromise}>
 				<div className="col-md-8 offset-md-2">
 					<StripeCheckout user={user} />

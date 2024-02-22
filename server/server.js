@@ -18,7 +18,7 @@ app.use(
 	express.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 })
 ); // Increase URL-encoded payload size
 //as we connect, we got a promise back
-console.log(process.env.DATABASE);
+
 mongoose
 	.connect(process.env.DATABASE)
 	.then(() => console.log("DB connected"))
@@ -40,9 +40,9 @@ fs.readdirSync("./routes").map((r) =>
 );
 
 app.use(express.static(path.join(__dirname, "build")));
-// app.get("/*", (req, res) => {
-// 	res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 //3 APP LISTENS TO PORT
 //port
