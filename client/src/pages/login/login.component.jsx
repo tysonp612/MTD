@@ -62,6 +62,7 @@ const Login = () => {
 				{/* //row has to be 12 */}
 				<div className="col-md-6 offset-md-3">
 					<h4>Login </h4>
+
 					<form onSubmit={credentialsLogin}>
 						<input
 							type="email"
@@ -116,6 +117,18 @@ const Login = () => {
 							</div>
 						</div>
 					</form>
+					<br></br>
+					<h4 className="bg-success text-white">
+						For testing purposes, please use this credentials
+					</h4>
+					<br></br>
+					<h5>Admin:</h5>
+					<h5>Username: tyson.project.ad@gmail.com</h5>
+					<h5>Password: 123456</h5>
+					<br></br>
+					<h5>User:</h5>
+					<h5>Username: tyson.project.user@gmail.com</h5>
+					<h5>Password: 123456</h5>
 				</div>
 			</div>
 		</div>
