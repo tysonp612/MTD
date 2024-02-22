@@ -58,6 +58,7 @@ exports.getAllProductsWithPagination = async (req, res) => {
 			.populate("subcategory")
 			.sort({ createdAt: -1 });
 		res.status(200).json(products);
+		console.log(products);
 	} catch (err) {
 		console.log(err);
 		res.status(404).send("No product found");

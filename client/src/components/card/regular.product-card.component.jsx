@@ -6,7 +6,10 @@ import {
 	ShoppingCartOutlined,
 	CheckOutlined,
 	DeleteOutlined,
+	HeartOutlined,
+	HeartFilled,
 } from "@ant-design/icons";
+
 import productsDefaultImages from "./../images/techdevices.jpeg";
 import { ShowAverage } from "./../rating/average-rating.component";
 import { CartActionTypes } from "../../redux/reducers/cart/cart.types";
@@ -28,6 +31,8 @@ export const ProductCard = ({
 
 	// Destructure Meta from Card
 	const { Meta } = Card;
+
+	const user = useSelector((state) => state.user.currentUser);
 
 	// Function to add the product to the cart
 	const handleAddToCart = () => {
@@ -77,8 +82,9 @@ export const ProductCard = ({
 			{/* Conditional rendering based on the 'okay' prop */}
 			<Card
 				cover={
+					// eslint-disable-next-line jsx-a11y/alt-text
 					<img
-						style={{ height: "200px", objectFit: "cover" }}
+						style={{ height: "250px", objectFit: "contain" }}
 						className="p-1"
 						src={
 							images && images.length ? images[0].url : productsDefaultImages

@@ -26,7 +26,7 @@ export const CheckoutPage = () => {
 	const navigate = useNavigate();
 	useEffect(() => {
 		loadCart();
-	}, []);
+	}, [discountedPrice]);
 
 	const loadCart = () => {
 		getCart(user.token)
@@ -80,7 +80,7 @@ export const CheckoutPage = () => {
 					toast.success("Apply coupon successfully");
 				}
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => toast.error(err.response.data.message));
 	};
 	return (
 		<div className="row">
@@ -173,7 +173,7 @@ export const CheckoutPage = () => {
 						<p style={{ textDecoration: "line-through" }}>
 							Total: ${totalPrice}
 						</p>
-						<p className="bg-success p-2">
+						<p className="bg-success p-2 text-white">
 							Discount Applied: Total Payable: ${discountedPrice}
 						</p>
 					</div>

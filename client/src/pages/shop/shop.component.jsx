@@ -347,6 +347,3 @@ export const ShopPage = () => {
 		</div>
 	);
 };
-
-//NOTE
-//NEED FILTER FOR BRANDS, NEED
